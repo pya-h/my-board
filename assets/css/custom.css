@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "AppFont";
+    src: url("../fonts/IranianSans.ttf") format("ttf");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "B1";
+    src: url("../fonts/b1/BYekan-webfont.eot") format("eot"),
+        url("../fonts/b1/BYekan-webfont.ttf") format("ttf"),
+        url("../fonts/b1/BYekan-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: "AppFont", "B1", sans-serif !important;
+}
+/* Animations */
+@keyframes xbounce-effect {
+    0% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(10px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+}
+@keyframes ybounce-effect {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(10px);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+}
+@keyframes wiper-effect {
+    0% {
+        transform: rotate(0deg);
+    }
+    30% {
+        transform: rotate(15deg);
+    }
+    75% {
+        transform: rotate(-15deg);
+    }
+}
+@keyframes wiper-effect-customized {
+    0% {
+        transform: rotate(0deg);
+        font-size: 50px;
+        color: #6a1a21;
+    }
+    30% {
+        transform: rotate(15deg);
+        font-size: 65px;
+        color: lightcoral;
+    }
+    75% {
+        transform: rotate(-15deg);
+        font-size: 45px;
+        color: orangered;
+    }
+}
+
+.not-found {
+    font-size: 50px;
+    text-align: center;
+    border: 5px solid grey;
+    border-radius: 1rem;
+    color: #6a1a21;
+    width: 70%;
+    padding: 1rem;
+    margin: 15% auto auto;
+    transition: all 2s;
+}
+.not-found:hover {
+    -webkit-animation: wiper-effect-customized 2s linear infinite;
+    -o-animation: wiper-effect-customized 2s linear infinite;
+    animation: wiper-effect-customized 2s linear infinite;
+}
+
+.error {
+    font-weight: bold;
+    color: #5a1616;
+    border: 2px solid red;
+    background-color: indianred;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 18px;
+
+}
+
+.warn {
+    font-weight: bold;
+    color: orangered;
+    border: 1px solid red;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 18px;
+
+}
+.success {
+    font-weight: bold;
+    color: midnightblue;
+    background-color: seagreen;
+    border: 1px solid green;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 18px;
+}
+
+.cool-anchor {
+    transition: all 600ms ease-in-out;
+    color: yellow;
+    font-weight: bold;
+}
+
+.cool-anchor:hover {
+    color: lightcoral;
+    font-size: 125%;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+button[type=submit] {
+    transition: all 1.5s;
+}
+button[type=submit]:hover {
+    background: #0f8107;
+}
