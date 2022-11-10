@@ -49,7 +49,7 @@ else if(isset($_POST['signupAttemp'])){
             $fullname = $_POST['fullname'];
 
             if(is_numeric($email) || strlen($email) < 3)
-                $_SESSION['response'] = '<p class="error"ایمیل وارد شده نامعتبر است!</p>';
+                $_SESSION['response'] = '<p class="error">ایمیل وارد شده نامعتبر است!</p>';
             else if(strlen($password) < 4)
                 $_SESSION['response'] = '<p class="error">رمزعبور انتخابی باید حداقل 4 کاراکتر باشد!</p>';
             else {
@@ -60,7 +60,8 @@ else if(isset($_POST['signupAttemp'])){
                 else if ($result->num_rows > 0)
                     $_SESSION['response'] = '<p class="error">حساب کاربری دیگری با این ایمیل قبلا ثبت نام کرده است!</p>';
                 else {
-                    $query = "INSERT INTO `" . TABLE_USERS . "` (" . USER_EMAIL . ", " . USER_PASSWORD . ", " . USER_FULLNAME . ") values ('$email', '$password', '$fullname')";
+                    $query = "INSERT INTO `" . TABLE_USERS . "` (" . USER_EMAIL . ", " . USER_PASSWORD .
+                        ", " . USER_FULLNAME . ") values ('$email', '$password', '$fullname')";
                     $result = $connection->query($query);
                     if ($result)
                         $_SESSION['response'] = '<p class="success">ثبت نام با موفقیت انجام شد.</p>';

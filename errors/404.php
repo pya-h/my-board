@@ -33,8 +33,8 @@
                             <p>You have reached the edge of the universe.
                                 <br>The page you requested could not be found.
                                 <br>Dont'worry and return to the previous page.</p>
-                            <div class="mt-5"> <a href="javascript:;" class="btn btn-light btn-lg px-md-5 radius-30">Go Home</a>
-                                <a href="javascript:;" class="btn btn-light btn-lg ms-3 px-md-5 radius-30">Back</a>
+                            <div class="mt-5"> <a href="<?php echo __DIR__ . '../home.php' ?>" class="btn btn-light btn-lg px-md-5 radius-30">Go Home</a>
+                                <a href="<?php echo '../home.php' ?>" class="btn btn-light btn-lg ms-3 px-md-5 radius-30">Back</a>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,6 @@
                 <li class="list-inline-item"><a href="javascript:;"><i class='bx bxl-google me-1'></i>Google</a>
                 </li>
             </ul>
-            <p class="mb-0">Copyright © 2021. All right reserved.</p>
         </div>
     </div>
 </div>

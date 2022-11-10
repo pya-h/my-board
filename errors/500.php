@@ -32,8 +32,8 @@
                             <h2 class="font-weight-bold display-4">Sorry, unexpected error</h2>
                             <p>Looks like you are lost!
                                 <br>May be you are not connected to the internet!</p>
-                            <div class="mt-5">	<a href="javascript:;" class="btn btn-lg btn-light px-md-5 radius-30">Go Home</a>
-                                <a href="javascript:;" class="btn btn-lg btn-white ms-3 px-md-5 radius-30">Back</a>
+                            <div class="mt-5"> <a href="<?php echo __DIR__ . '../home.php' ?>" class="btn btn-light btn-lg px-md-5 radius-30">Go Home</a>
+                                <a href="<?php echo '../home.php' ?>" class="btn btn-light btn-lg ms-3 px-md-5 radius-30">Back</a>
                             </div>
                         </div>
                     </div>

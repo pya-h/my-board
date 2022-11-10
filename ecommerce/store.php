@@ -51,20 +51,23 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 product-grid">
                 <?php
-                $query = mysqli_query($connection, 'SELECT * FROM ' . TABLE_PRODUCTS);
-                while( $product = mysqli_fetch_array($query)):
-                    ?>
-                    <div class="col">
-                        <div class="card">
-                            <img src="https://via.placeholder.com/110x110" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title cursor-pointer"><?php echo $product[PRODUCT_TITLE] ?></h6>
-                                <div class="clearfix">
-                                    <p class="mb-0 float-end fw-bold"><span class="me-2 text-decoration-line-through text-secondary"><?php echo $product[PRODUCT_PRICE] . " تومن" ?></p>
+                    $query = mysqli_query($connection, 'SELECT * FROM ' . TABLE_PRODUCTS);
+                    while( $product = mysqli_fetch_array($query)):
+                ?>
+                        <a href="<?php echo ROUTE_PRODUCT . '/' . $product[PRODUCT_ID]; ?>" class="col product-card">
+                            <div dir="rtl" class="card h-100">
+                                <img src="<?php echo $product[PRODUCT_IMAGE]; ?>" class="card-img-top" alt="...">
+                                <div class="">
+                                    <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-10%</span></div>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title cursor-pointer"><?php echo $product[PRODUCT_TITLE]; ?></h6>
+                                    <div class="clearfix">
+                                        <h5 class="mb-0 text-info float-end fw-bold"><span class="me-2 text-success"><?php echo $product[PRODUCT_PRICE]; ?> </span> تومان</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </a>
                 <?php endwhile; ?>
             </div><!--end row-->
         </div>
@@ -73,11 +76,9 @@
     <!--start overlay-->
     <div class="overlay toggle-icon"></div>
     <!--end overlay-->
-    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-    <!--End Back To Top Button-->
-    <footer class="page-footer">
-        <p class="mb-0">Copyright © 2021. All right reserved.</p>
-    </footer>
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+
 </div>
 <!--end wrapper-->
 <!--start switcher-->

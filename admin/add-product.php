@@ -39,39 +39,84 @@
 
             </div>
             <!--end breadcrumb-->
-        <form action="#" method="post">
+        <form action="/admin/addact.php" method="post" enctype="multipart/form-data">
           <div class="card">
               <div class="card-bodyp-4">
-                  <h5 class="card-title">کالای جدید</h5>
+                  <h5 class="card-title text-center my-3">کالای جدید</h5>
+                  <div class="row">
+                      <div class="col-md-6 mx-auto">
+                          <?php
+                          if(isset($_SESSION['upload_status'])){
+                              echo $_SESSION['upload_status'];
+                              unset($_SESSION['upload_status']);
+                          }
+                          ?>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6 mx-auto">
+                          <?php
+                              if(isset($_SESSION['final_status'])){
+                                  echo $_SESSION['final_status'];
+                                  unset($_SESSION['final_status']);
+                              }
+                          ?>
+                      </div>
+                  </div>
                   <hr/>
-                   <div dir="rtl" class="form-body mt-4">
+
+                  <div dir="rtl" class="form-body mt-4">
                         <div class="row">
                            <div class="col-lg-8 mx-auto">
                                <div class="border border-3 p-4 rounded">
                                     <div class="mb-5">
-                                        <label for="txtTitle" class="form-label">عنوان کالا</label>
+                                        <label for="txtTitle" class="form-label">عنوان کالا
+                                            <span style="font-size: 30px; color: orangered;">
+                                                *
+                                            </span>
+                                        </label>
                                         <input type="text" class="form-control" name="title" id="txtTitle" required placeholder="عنوان کالا را وارد کنید">
                                       </div>
                                        <div class="mb-5">
-                                           <label for="txtSummary" class="form-label">معرفی مختصر</label>
+                                           <label for="txtSummary" class="form-label">معرفی مختصر
+                                               <span style="font-size: 30px; color: orangered;">
+                                                    *
+                                                </span>
+                                           </label>
                                            <input name="summary" class="form-control" placeholder="معرفی مختصری وارد کنید" id="txtSummary"/>
+                                       </div>
+                                       <div class="mb-5">
+                                           <label for="txtPrice" class="form-label">قیمت
+                                               <span style="font-size: 30px; color: orangered;">
+                                                        *
+                                                </span>
+                                           </label>
+                                           <input type="number" class="form-control" name="price" id="txtPrice" placeholder="قیمت کالا را وارد کنید" required>
                                        </div>
                                       <div class="mb-5">
                                         <label for="txtDescription" class="form-label">معرفی کامل</label>
                                         <textarea id="txtDescription" name="description" class="form-control" placeholder="در اینجا می توانید معرفی کامل تر، با توضیحات بیشتر وارد کنید؛ و یا اینکه به همان معرفی مختصر اکتفا کنید و این بخش را خالی بگذارید" txtDescription" rows="5"></textarea>
                                       </div>
-                                       <div class="mb-5">
-                                           <label for="txtPrice" class="form-label">قیمت</label>
-                                           <input type="number" class="form-control" name="price" id="txtPrice" placeholder="قیمت کالا را وارد کنید" required>
-                                       </div>
                                         <hr />
+                                       <script type="text/javascript">
+                                           function openFileDialog() {
+                                               const fileInput = document.getElementById("inputProductImage");
+                                               fileInput.click();
+                                           }
+                                       </script>
                                         <div class="my-5">
-                                            <label for="txtDescription" class="form-label">تصویر کالا</label>
-                                            <input id="image-uploadify" type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf">
+                                            <div onclick="openFileDialog()" class="file-box-input text-center">
+                                                <label  for="inputProductImage" class="form-label">
+                                                    <h4 id="labelForInputImage">
+                                                    لطفا با کلیک بر اینجا عکس کالا را انتخاب کنید.
+                                                    </h4>
+                                                </label>
+                                                <input id="inputProductImage" name="selectedImageFile" hidden type="file" accept=".jpg,.jpeg,.png,.gif">
+                                            </div>
                                         </div>
                                          <hr />
                                           <div class="d-grid">
-                                             <button type="submit" class="btn btn-light">ثبت کالا</button>
+                                             <button type="submit" name="newPoductSubmitted" class="btn btn-light">ثبت کالا</button>
                                           </div>
                                    </div>
                               </div>
@@ -89,9 +134,6 @@
     <!--end overlay-->
     <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
-    <footer class="page-footer">
-        <p class="mb-0">Copyright © 2021. All right reserved.</p>
-    </footer>
 </div>
 <!--end wrapper-->
 <!--start switcher-->

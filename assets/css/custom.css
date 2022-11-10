@@ -66,6 +66,20 @@
         color: orangered;
     }
 }
+@keyframes text-vibrate-effect {
+    0% {
+        transform: rotate(0deg);
+        color: #6a1a21;
+    }
+    30% {
+        transform: rotate(2deg);
+        color: lightcoral;
+    }
+    75% {
+        transform: rotate(-2deg);
+        color: orangered;
+    }
+}
 
 .not-found {
     font-size: 50px;
@@ -119,6 +133,7 @@
 
 .cool-anchor {
     transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
     color: yellow;
     font-weight: bold;
 }
@@ -137,4 +152,31 @@ button[type=submit] {
 }
 button[type=submit]:hover {
     background: #0f8107;
+}
+.product-card {
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+.product-card:hover {
+    -webkit-animation: ybounce-effect 1s linear infinite;
+    -o-animation: ybounce-effect 1s linear infinite;
+    animation: ybounce-effect 1s linear infinite;
+}
+
+.file-box-input {
+    cursor: pointer;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    border: 2px dashed royalblue;
+    padding: 40px 20px 40px 20px;
+    border-radius: 15px;
+    height: 7rem;
+}
+
+.file-box-input:hover  {
+    background-color: royalblue;
+}
+
+.file-box-input:hover #labelForInputImage {
+    animation: text-vibrate-effect 1s linear infinite;
 }

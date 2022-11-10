@@ -37,10 +37,12 @@ defined('ROUTE_FORGET_PASSWORD') or define('ROUTE_FORGET_PASSWORD', '/4get');
 defined('ROUTE_RESET_PASSWORD') or define('ROUTE_RESET_PASSWORD', '/reset');
 
 defined('ROUTE_STORE') or define('ROUTE_STORE', '/store');
+defined('ROUTE_PRODUCT') or define('ROUTE_PRODUCT', '/product');
 defined('ROUTE_NEW_PRODUCT') or define('ROUTE_NEW_PRODUCT', '/newproduct');
 defined('ROUTE_ORDERS') or define('ROUTE_ORDERS', '/orders');
 
 defined('MEDIA_DIR') or define('MEDIA_DIR', '/media');
+defined('IMG_DIR') or define('IMG_DIR', '/img');
 
 try {
     $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -65,3 +67,16 @@ function get_url_param($url, $expected_param = 'todo'){
     return null;
 }
 
+function gen_dirtree($full_route) {
+    // create a dir if doesnt exist
+    $routes = explode("/", $full_route);
+    $cd = __DIR__ . '/..';
+    foreach($routes as $child) {
+        $cd .= '/' . $child;
+        if (!file_exists( $cd)) {
+            mkdir($cd, 0777, true);
+        }
+    }
+}
+
+gen_dirtree( MEDIA_DIR . IMG_DIR );
