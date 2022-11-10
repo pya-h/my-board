@@ -1,60 +1,38 @@
 
 <!--wrapper-->
 <div class="wrapper">
-    <!--sidebar wrapper -->
-    <div class="sidebar-wrapper" data-simplebar="true">
-        <div class="sidebar-wrapper" data-simplebar="true">
-            <div class="sidebar-header">
-                <div>
-                    <img src="../assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-                </div>
-                <div>
-                    <h4 class="logo-text"><?php echo APP_TITLE; ?></h4>
-                </div>
-                <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
-                </div>
-            </div>
-            <?php require_once __DIR__ . '/../common/navigation.php' ?>
+    <?php require_once __DIR__ . '/../common/sidebar.php' ;
+    require_once __DIR__ . '/../common/topnav.php' ; ?>
 
-        </div>
-    </div>
-    <!--end sidebar wrapper -->
-    <!--start header -->
-    <?php require_once __DIR__ . '/../common/topnav.php' ; ?>
-    <!--end header -->
-    <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
-
-
             <?php
-
-            if (isset($_SESSION[USER_ADMIN]) && $_SESSION[USER_ADMIN]) {
-                $new_product = ROUTE_NEW_PRODUCT; // for using in _ADMIN_MENU string
-                echo <<<_NEW_PRODUCT_BUTTON
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-5 mx-auto">
-                                                <a href="$new_product" class="btn btn-light btn-large btn-block w-100 mb-3 mb-lg-0"><i class='bx bxs-plus-square'></i>کالای جدید</a>
+                if (isset($_SESSION[USER_ADMIN]) && $_SESSION[USER_ADMIN]) {
+                    $new_product = ROUTE_NEW_PRODUCT; // for using in _ADMIN_MENU string
+                    echo <<<_NEW_PRODUCT_BUTTON
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col-5 mx-auto">
+                                                    <a href="$new_product" class="btn btn-light btn-large btn-block w-100 mb-3 mb-lg-0"><i class='bx bxs-plus-square'></i>کالای جدید</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                 _NEW_PRODUCT_BUTTON;
-            }
+                }
             ?>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 product-grid">
                 <?php
-                    $query = mysqli_query($connection, 'SELECT * FROM ' . TABLE_PRODUCTS);
+                    $query = mysqli_query($connection, 'SELECT * FROM ' . TABLE_PRODUCTS . ' WHERE ' . PRODUCT_AVAILABLE . "=1");
                     while( $product = mysqli_fetch_array($query)):
                 ?>
-                        <a href="<?php echo ROUTE_PRODUCT . '/' . $product[PRODUCT_ID]; ?>" class="col product-card">
+                        <a href="<?php echo make_url_param(ROUTE_PRODUCT ,PRODUCT_ID, $product[PRODUCT_ID]); ?>" class="col product-card">
                             <div dir="rtl" class="card h-100">
                                 <img src="<?php echo $product[PRODUCT_IMAGE]; ?>" class="card-img-top" alt="...">
                                 <div class="">

@@ -1,7 +1,7 @@
 <?php
     $request = $_SERVER['REQUEST_URI'];
     switch($request){
-        case '/':
+        case ROUTE_ROOT:
         case '':
             if(isset($_SESSION[USER_ID]) && $_SESSION[USER_ID] && isset($_SESSION[USER_EMAIL]) && $_SESSION[USER_EMAIL])
                 require_once __DIR__ . '/home.php';
@@ -44,7 +44,16 @@
             break;
 
         default:
+            $arr_route = explode($request, "?");
+            if (count($arr_route) === 2) {
+                if($arr_route[0] === ROUTE_PRODUCT) {
+                    require_once __DIR__ . '/ecommerce/product.php';
+                    break;
+                }
+            }
+
             http_response_code(404);
             require __DIR__ . '/errors/404.php';
+
             break;
     }

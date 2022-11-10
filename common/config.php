@@ -35,6 +35,7 @@ defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', '/signup');
 defined('ROUTE_SIGN_OUT') or define('ROUTE_SIGN_OUT', '/signout');
 defined('ROUTE_FORGET_PASSWORD') or define('ROUTE_FORGET_PASSWORD', '/4get');
 defined('ROUTE_RESET_PASSWORD') or define('ROUTE_RESET_PASSWORD', '/reset');
+defined('ROUTE_ROOT') or define('ROUTE_ROOT', '/');
 
 defined('ROUTE_STORE') or define('ROUTE_STORE', '/store');
 defined('ROUTE_PRODUCT') or define('ROUTE_PRODUCT', '/product');
@@ -57,6 +58,9 @@ catch(Exception $ex){
     $connection = null;
 }
 
+function make_url_param($url, $key, $value) {
+    return "$url?$key=$value";
+}
 function get_url_param($url, $expected_param = 'todo'){
     $url_components = parse_url($url);
     if(array_key_exists("query", $url_components)) {

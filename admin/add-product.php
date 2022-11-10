@@ -14,7 +14,7 @@
             </div>
         </div>
         <!--navigation-->
-        <?php require_once __DIR__ . '/../common/navigation.php'; ?>
+        <?php require_once __DIR__ . '/../common/sidebar.php'; ?>
     </div>
     <!--end sidebar wrapper -->
     <!--start header -->
@@ -44,12 +44,12 @@
               <div class="card-bodyp-4">
                   <h5 class="card-title text-center my-3">کالای جدید</h5>
                   <div class="row">
-                      <div class="col-md-6 mx-auto">
+                      <div dir="rtl" class="col-md-6 mx-auto">
                           <?php
-                          if(isset($_SESSION['upload_status'])){
-                              echo $_SESSION['upload_status'];
-                              unset($_SESSION['upload_status']);
-                          }
+                              if(isset($_SESSION['upload_status'])){
+                                  echo $_SESSION['upload_status'];
+                                  unset($_SESSION['upload_status']);
+                              }
                           ?>
                       </div>
                   </div>

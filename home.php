@@ -1,26 +1,9 @@
+
 <!--wrapper-->
 <div class="wrapper">
-    <!--sidebar wrapper -->
-    <div class="sidebar-wrapper" data-simplebar="true">
-        <div class="sidebar-header">
-            <div>
-                <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-            </div>
-            <div>
-                <h4 class="logo-text"><?php echo APP_TITLE; ?></h4>
-            </div>
-            <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
-            </div>
-        </div>
-        <!--navigation-->
-        <?php require_once __DIR__ . '/common/navigation.php' ?>
-        <!--end navigation-->
-    </div>
-    <!--end sidebar wrapper -->
-    <!--start header -->
-    <?php require_once __DIR__ . '/common/topnav.php' ?>
+    <?php require_once __DIR__ . '/common/sidebar.php';
+    require_once __DIR__ . '/common/topnav.php' ?>
 
-    <!--end header -->
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
