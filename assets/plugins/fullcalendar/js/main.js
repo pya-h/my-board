@@ -4823,7 +4823,7 @@ var FullCalendar = (function (exports) {
     /*
     An object for getting/setting scroll-related information for an element.
     Internally, this is done very differently for window versus DOM element,
-    so this object serves as a common interface.
+    so this object serves as a usefuls interface.
     */
     var ScrollController = /** @class */ (function () {
         function ScrollController() {
@@ -9012,7 +9012,7 @@ var FullCalendar = (function (exports) {
                     borderColor: hookProps.borderColor,
                     backgroundColor: hookProps.backgroundColor
                 }, ref: rootElRef }, getSegAnchorAttrs(seg)),
-                createElement("div", { className: 'fc-event-main', ref: innerElRef, style: { color: hookProps.textColor } }, innerContent),
+                createElement("div", { className: 'fc-event-common', ref: innerElRef, style: { color: hookProps.textColor } }, innerContent),
                 hookProps.isStartResizable &&
                     createElement("div", { className: 'fc-event-resizer fc-event-resizer-start' }),
                 hookProps.isEndResizable &&
@@ -9021,7 +9021,7 @@ var FullCalendar = (function (exports) {
         return StandardEvent;
     }(BaseComponent));
     function renderInnerContent(innerProps) {
-        return (createElement("div", { className: 'fc-event-main-frame' },
+        return (createElement("div", { className: 'fc-event-common-frame' },
             innerProps.timeText &&
                 createElement("div", { className: 'fc-event-time' }, innerProps.timeText),
             createElement("div", { className: 'fc-event-title-container' },

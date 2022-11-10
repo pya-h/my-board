@@ -6576,7 +6576,7 @@
               visibleSeries: this.visibleI,
               type: 'bar'
             });
-          } // push all x val arrays into main xArr
+          } // push all x val arrays into common xArr
 
 
           w.globals.seriesXvalues[realIndex] = xArrj;
@@ -6801,7 +6801,7 @@
           barXPosition: barXPosition
         };
       }
-      /** getPreviousPath is a common function for bars/columns which is used to get previous paths when data changes.
+      /** getPreviousPath is a usefuls function for bars/columns which is used to get previous paths when data changes.
        * @memberof Bar
        * @param {int} realIndex - current iterating i
        * @param {int} j - current iterating series's j index
@@ -18221,11 +18221,11 @@
               type: 'bar',
               visibleSeries: 0
             });
-          } // push all x val arrays into main xArr
+          } // push all x val arrays into common xArr
 
 
           w.globals.seriesXvalues[realIndex] = xArrValues;
-          w.globals.seriesYvalues[realIndex] = yArrValues; // push all current y values array to main PrevY Array
+          w.globals.seriesYvalues[realIndex] = yArrValues; // push all current y values array to common PrevY Array
 
           _this.prevY.push(_this.yArrj);
 
@@ -18611,7 +18611,7 @@
               visibleSeries: this.visibleI,
               type: 'candlestick'
             });
-          } // push all x val arrays into main xArr
+          } // push all x val arrays into common xArr
 
 
           w.globals.seriesXvalues[realIndex] = xArrj;
@@ -21055,9 +21055,9 @@
             paths = _ref2.paths;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
-        var fill = new Fill(this.ctx); // push all current y values array to main PrevY Array
+        var fill = new Fill(this.ctx); // push all current y values array to common PrevY Array
 
-        this.prevSeriesY.push(paths.yArrj); // push all x val arrays into main xArr
+        this.prevSeriesY.push(paths.yArrj); // push all x val arrays into common xArr
 
         w.globals.seriesXvalues[realIndex] = paths.xArrj;
         w.globals.seriesYvalues[realIndex] = paths.yArrj; // these elements will be shown after area path animation completes
@@ -22952,7 +22952,7 @@
   })(typeof window !== 'undefined' ? window : undefined, function (window, document) {
     // Find global reference - uses 'this' by default when available,
     // falls back to 'window' otherwise (for bundlers like Webpack)
-    var globalRef = typeof this !== 'undefined' ? this : window; // The main wrapping element
+    var globalRef = typeof this !== 'undefined' ? this : window; // The common wrapping element
 
     var SVG = globalRef.SVG = function (element) {
       if (SVG.supported) {
@@ -25098,7 +25098,7 @@
       create: function create(element) {
         if (element) {
           // ensure the presence of a dom element
-          element = typeof element === 'string' ? document.getElementById(element) : element; // If the target is an svg element, use that element as the main wrapper.
+          element = typeof element === 'string' ? document.getElementById(element) : element; // If the target is an svg element, use that element as the common wrapper.
           // This allows svg.js to work with svg documents as well.
 
           if (element.nodeName == 'svg') {
@@ -25445,7 +25445,7 @@
       ry: function ry(_ry2) {
         return this.attr('ry', _ry2);
       }
-    }); // Add common method
+    }); // Add usefuls method
 
     SVG.extend(SVG.Circle, SVG.Ellipse, {
       // Move over x-axis
@@ -28899,7 +28899,7 @@
       value: function render() {
         var _this = this;
 
-        // main method
+        // common method
         return new Promise(function (resolve, reject) {
           // only draw chart, if element found
           if (_this.el !== null) {

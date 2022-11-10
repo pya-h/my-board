@@ -10,8 +10,8 @@ if(isset($_POST['signinAttemp'])){
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $query = "SELECT " . USER_ID . ", " . USER_EMAIL . " FROM  `" . TABLE_USERS . "` WHERE " . USER_EMAIL . "='$email' AND " .
-                USER_PASSWORD . "='$password'";
+            $query = "SELECT " . USER_ID . ", " . USER_ADMIN . ", " . USER_EMAIL . ", " . USER_FULLNAME .
+                " FROM  `" . TABLE_USERS . "` WHERE " . USER_EMAIL . "='$email' AND " . USER_PASSWORD . "='$password'";
             $result = $connection->query($query);
             if (!$result)
                 $_SESSION['response'] = '<p class="error">بارگذاری داده های دیتابیس با خطا مواجه شد!</p>';
@@ -19,6 +19,8 @@ if(isset($_POST['signinAttemp'])){
                 $row = $result->fetch_array(MYSQLI_ASSOC);
                 $_SESSION[USER_ID] = $row[USER_ID];
                 $_SESSION[USER_EMAIL] = $row[USER_EMAIL];
+                $_SESSION[USER_ADMIN] = $row[USER_ADMIN];
+                $_SESSION[USER_FULLNAME] = $row[USER_FULLNAME];
                 $logged_in = true;
             }
             else {

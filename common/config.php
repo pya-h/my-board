@@ -9,17 +9,37 @@ defined('DB_USERNAME') or define('DB_USERNAME', 'root');
 defined('DB_PASSWORD') or define('DB_PASSWORD', '');
 defined('DB_NAME') or define('DB_NAME','vps-db');
 
-// TABLE:USER KEYS
+// TABLE:USERS KEYS
 defined('TABLE_USERS') or define('TABLE_USERS', 'users');
 defined('USER_EMAIL') or define('USER_EMAIL', 'email');
 defined('USER_PASS') or define('USER_PASSWORD', 'pass');
 defined('USER_ID') or define('USER_ID', 'pass');
+defined('USER_ADMIN') or define('USER_ADMIN', 'admin');
 defined('USER_FULLNAME') or define('USER_FULLNAME', 'name');
 
+// TABLE:PRODUCTS KEYS
+defined('TABLE_PRODUCTS') or define('TABLE_PRODUCTS', 'products');
+defined('PRODUCT_TITLE') or define('PRODUCT_TITLE', 'title');
+defined('PRODUCT_ID') or define('PRODUCT_ID', 'id');
+defined('PRODUCT_SUMMARY') or define('PRODUCT_SUMMARY', 'summary');
+defined('PRODUCT_DESCRIPTION') or define('PRODUCT_DESCRIPTION', 'description');
+defined('PRODUCT_PRICE') or define('PRODUCT_PRICE', 'price');
+defined('PRODUCT_AVAILABLE') or define('PRODUCT_AVAILABLE', 'available');
+defined('PRODUCT_DURATION') or define('PRODUCT_DURATION', 'duration');
+defined('PRODUCT_MAX_USERS') or define('PRODUCT_MAX_USERS', 'max_users');
+defined('PRODUCT_IMAGE') or define('PRODUCT_IMAGE', 'img');
+
 // ROUTES
-defined('ROUTE_SIGN_IN') or define('ROUTE_SIGN_IN', '/sign-in');
-defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', '/sign-up');
-defined('ROUTE_SIGN_OUT') or define('ROUTE_SIGN_OUT', '/sign-out');
+defined('ROUTE_SIGN_IN') or define('ROUTE_SIGN_IN', '/signin');
+defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', '/signup');
+defined('ROUTE_SIGN_OUT') or define('ROUTE_SIGN_OUT', '/signout');
+defined('ROUTE_FORGET_PASSWORD') or define('ROUTE_FORGET_PASSWORD', '/4get');
+defined('ROUTE_RESET_PASSWORD') or define('ROUTE_RESET_PASSWORD', '/reset');
+
+defined('ROUTE_STORE') or define('ROUTE_STORE', '/store');
+defined('ROUTE_NEW_PRODUCT') or define('ROUTE_NEW_PRODUCT', '/newproduct');
+defined('ROUTE_ORDERS') or define('ROUTE_ORDERS', '/orders');
+
 defined('MEDIA_DIR') or define('MEDIA_DIR', '/media');
 
 try {

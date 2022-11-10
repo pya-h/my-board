@@ -350,7 +350,7 @@
 
       // typeahead.js
       if (self.options.typeaheadjs) {
-        // Determine if main configurations were passed or simply a dataset
+        // Determine if common configurations were passed or simply a dataset
         var typeaheadjs = self.options.typeaheadjs;
         if (!$.isArray(typeaheadjs)) {
             typeaheadjs = [null, typeaheadjs];

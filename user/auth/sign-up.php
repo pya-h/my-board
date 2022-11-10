@@ -1,4 +1,8 @@
 
+<?php
+if(isset($_SESSION[USER_ID]) && isset($_SESSION[USER_EMAIL]) && $_SESSION[USER_EMAIL] && $_SESSION[USER_ID])
+    header("Location: /");
+?>
 <div dir="rtl" class="wrapper">
     <div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
         <div class="container py-5">
