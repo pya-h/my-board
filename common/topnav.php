@@ -15,8 +15,8 @@
                         <a class="nav-link" href="#">	<i class='bx bx-search'></i>
                         </a>
                     </li>
-                    <div class="header-notifications-list"></div>
-                    <div class="header-message-list"></div>
+                    <li class="header-notifications-list"></li>
+                    <li class="header-message-list"></li>
                 </ul>
             </div>
             <div class="user-box dropdown">

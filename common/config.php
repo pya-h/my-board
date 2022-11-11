@@ -30,20 +30,36 @@ defined('PRODUCT_MAX_USERS') or define('PRODUCT_MAX_USERS', 'max_users');
 defined('PRODUCT_IMAGE') or define('PRODUCT_IMAGE', 'img');
 
 // ROUTES
-defined('ROUTE_SIGN_IN') or define('ROUTE_SIGN_IN', '/signin');
-defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', '/signup');
-defined('ROUTE_SIGN_OUT') or define('ROUTE_SIGN_OUT', '/signout');
-defined('ROUTE_FORGET_PASSWORD') or define('ROUTE_FORGET_PASSWORD', '/4get');
-defined('ROUTE_RESET_PASSWORD') or define('ROUTE_RESET_PASSWORD', '/reset');
-defined('ROUTE_ROOT') or define('ROUTE_ROOT', '/');
+defined('ROUTE_ROOT') or define('ROUTE_ROOT', '/'); // whatever.xxx/
+defined('ROUTE_SIGN_IN') or define('ROUTE_SIGN_IN', ROUTE_ROOT . 'signin');
+defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', ROUTE_ROOT . 'signup');
+defined('ROUTE_SIGN_OUT') or define('ROUTE_SIGN_OUT', ROUTE_ROOT . 'signout');
+defined('ROUTE_FORGET_PASSWORD') or define('ROUTE_FORGET_PASSWORD', ROUTE_ROOT . '4get');
+defined('ROUTE_RESET_PASSWORD') or define('ROUTE_RESET_PASSWORD', ROUTE_ROOT . 'reset');
 
-defined('ROUTE_STORE') or define('ROUTE_STORE', '/store');
-defined('ROUTE_PRODUCT') or define('ROUTE_PRODUCT', '/product');
-defined('ROUTE_NEW_PRODUCT') or define('ROUTE_NEW_PRODUCT', '/newproduct');
-defined('ROUTE_ORDERS') or define('ROUTE_ORDERS', '/orders');
+defined('ROUTE_STORE') or define('ROUTE_STORE', ROUTE_ROOT . 'store');
+defined('ROUTE_PRODUCT') or define('ROUTE_PRODUCT', ROUTE_ROOT . 'store/product');
+defined('ROUTE_NEW_PRODUCT') or define('ROUTE_NEW_PRODUCT', ROUTE_ROOT . 'newproduct');
+defined('ROUTE_ORDERS') or define('ROUTE_ORDERS', ROUTE_ROOT . 'orders');
+defined('ROUTE_FAQ') or define('ROUTE_FAQ', ROUTE_ROOT . 'faq');
+defined('ROUTE_SUPPORT') or define('ROUTE_SUPPORT', ROUTE_ROOT . 'support');
 
-defined('MEDIA_DIR') or define('MEDIA_DIR', '/media');
-defined('IMG_DIR') or define('IMG_DIR', '/img');
+defined('MEDIA_DIR') or define('MEDIA_DIR', ROUTE_ROOT . 'media');
+defined('IMG_DIR') or define('IMG_DIR', ROUTE_ROOT . 'img');
+
+// zarinpal
+defined('ROUTE_ZARINCALL') or define('ROUTE_ZARINCALL', ROUTE_ROOT . 'purchase/zarinpal');
+defined('ROUTE_ZARINCALL') or define('ROUTE_ZARINPAL_VERIFY', ROUTE_ROOT . 'verify');
+defined('ZARINPAL_MERCHANT_ID') or define('ZARINPAL_MERCHANT_ID', "21b1695f-b0a4-479f-8df2-f79fbe91d285");
+
+defined('ORDER') or define('ORDER', 'order');
+defined('ORDER_COST') or define('ORDER_COST', 'cost');
+defined('ORDER_PRODUCT') or define('ORDER_PRODUCT', 'productname');
+
+defined('ERROR') or define('ERROR', 'err');
+defined('ERR_TITLE') or define('ERR_TITLE', 'title');
+defined('ERR_MSG') or define('ERR_MSG', 'msg');
+defined('ERR_IMG') or define('ERR_IMG', 'img');
 
 try {
     $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);

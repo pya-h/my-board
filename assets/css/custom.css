@@ -156,6 +156,7 @@ button[type=submit]:hover {
 .product-card {
     transition: all 1s;
     -webkit-transition: all 1s;
+
 }
 .product-card:hover {
     -webkit-animation: ybounce-effect 1s linear infinite;
