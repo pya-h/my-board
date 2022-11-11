@@ -52,17 +52,21 @@
 
         // QUESTION & SUPPORT SECTION
         case ROUTE_FAQ:
-            require __DIR__ . '/admin/faq.php';
+            require_once __DIR__ . '/admin/faq.php';
             break;
 
 
         // PURCHASE SECTION
-        // BY ZARINPAL
+        case ROUTE_PURCHASE:
+            require_once __DIR__ . '/purchase/manage.php';
+            break;
+
+            // BY ZARINPAL
         case ROUTE_ZARINCALL:
-            require __DIR__ . '/purchase/zarinpal/request.php';
+            require_once __DIR__ . '/purchase/zarinpal/request.php';
             break;
         case ROUTE_ZARINPAL_VERIFY:
-            require __DIR__ . '/purchase/zarinpal/verification.php';
+            require_once __DIR__ . '/purchase/zarinpal/verification.php';
             break;
 
 

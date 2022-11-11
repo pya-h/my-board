@@ -1,9 +1,9 @@
 <?php
 
 $Authority = $_GET['Authority'];
-$data = array("merchant_id" => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "authority" => $Authority, "amount" => 1000);
+$data = array("merchant_id" => ZARINPAL_MERCHANT_ID, "authority" => $Authority, "amount" => $_SESSION[ORDER_COST]);
 $jsonData = json_encode($data);
-$ch = curl_init('https://api.zarinpal.com/pg/v4/payment/verify.json');
+$ch = curl_init(LINK_ZARINPALL_VERIFY);
 curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v4');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
@@ -26,6 +26,8 @@ if ( $_SESSION[ERROR]) {
         echo "<h2>پرداخت با موفقیت انجام شد. <br> کد رهگیری: " . $result['data']['ref_id'] . "</h2>";
     else
         echo  "<h2>" . $_SESSION[ERROR][ERR_TITLE] . " <br> " .  $_SESSION[ERROR][ERR_MSG] . "</h2>";
-
 }
 
+// unset session values
+foreach ([ORDER_COST, ORDER_PRODUCT, ERROR] as $key)
+    unset($_SESSION[$key]);

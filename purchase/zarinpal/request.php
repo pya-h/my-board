@@ -3,11 +3,11 @@
 $data = array("merchant_id" => ZARINPAL_MERCHANT_ID,
     "amount" => $_SESSION[ORDER_COST],
     "callback_url" => ROUTE_ZARINPAL_VERIFY,
-    "description" => "خرید کالا: " . S_SESSION[ORDER][ORDER_PRODUCT],
+    "description" => "خرید " . $_SESSION[ORDER_PRODUCT],
     "metadata" => [ "email" => $_SESSION[USER_EMAIL]],
-    );
+);
 $jsonData = json_encode($data);
-$ch = curl_init('https://api.zarinpal.com/pg/v4/payment/request.json');
+$ch = curl_init(LINK_ZARINPALL_REQUEST);
 curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v1');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);

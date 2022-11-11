@@ -1,5 +1,6 @@
 <?php
 
+// *************************** CONSTANTS ****************************
 // APP
 defined('APP_TITLE') or define('APP_TITLE', 'داشبرد');
 
@@ -47,9 +48,15 @@ defined('ROUTE_SUPPORT') or define('ROUTE_SUPPORT', ROUTE_ROOT . 'support');
 defined('MEDIA_DIR') or define('MEDIA_DIR', ROUTE_ROOT . 'media');
 defined('IMG_DIR') or define('IMG_DIR', ROUTE_ROOT . 'img');
 
-// zarinpal
+// purchase
+defined('ROUTE_PURCHASE') or define('ROUTE_PURCHASE', ROUTE_ROOT . 'purchase');
+
+// purchase by zarinpal
+defined('LINK_ZARINPALL_REQUEST') or define('LINK_ZARINPALL_REQUEST', 'https://api.zarinpal.com/pg/v4/payment/request.json');
+defined('LINK_ZARINPALL_VERIFY') or define('LINK_ZARINPALL_VERIFY', 'https://api.zarinpal.com/pg/v4/payment/verify.json');
+
 defined('ROUTE_ZARINCALL') or define('ROUTE_ZARINCALL', ROUTE_ROOT . 'purchase/zarinpal');
-defined('ROUTE_ZARINCALL') or define('ROUTE_ZARINPAL_VERIFY', ROUTE_ROOT . 'verify');
+defined('ROUTE_ZARINPAL_VERIFY') or define('ROUTE_ZARINPAL_VERIFY', ROUTE_ROOT . 'purchase/verify');
 defined('ZARINPAL_MERCHANT_ID') or define('ZARINPAL_MERCHANT_ID', "21b1695f-b0a4-479f-8df2-f79fbe91d285");
 
 defined('ORDER') or define('ORDER', 'order');
@@ -61,6 +68,10 @@ defined('ERR_TITLE') or define('ERR_TITLE', 'title');
 defined('ERR_MSG') or define('ERR_MSG', 'msg');
 defined('ERR_IMG') or define('ERR_IMG', 'img');
 
+// *************************** COMMON METHODS ****************************
+
+$connection = null;
+
 try {
     $connection = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 }
@@ -71,7 +82,6 @@ catch(Exception $ex){
     setTimeout(() => window.alert("ارتباط با دیتابیس ناموفق بود! \n این یعنی اکثر بخش های سایت را بصورت ناقض خواهید دید! \n لطفا لحظاتی دیگر دوباره تلاش کنید."), 2000);
 </script>
 <?php
-    $connection = null;
 }
 
 function make_url_param($url, $key, $value) {
@@ -99,4 +109,24 @@ function gen_dirtree($full_route) {
     }
 }
 
+function get_product($product_id) {
+    global $connection;
+    if($connection) {
+        $query = sprintf("SELECT * FROM `%s` WHERE %s=%d AND %s=%d", TABLE_PRODUCTS, PRODUCT_ID, $product_id, PRODUCT_AVAILABLE, 1);
+        $result = $connection->query($query);
+
+        if($result)
+            if($result->num_rows > 0) {
+                return $result->fetch_array(MYSQLI_ASSOC);
+            }
+            else
+                $_SESSION[ERROR] = array(ERR_TITLE => "کالای ناموجود", ERR_MSG => 'چنین کالایی وجود خارجی ندارد!');
+        else
+            $_SESSION[ERROR] = array(ERR_TITLE => "خطای دریافت مشخصات", ERR_MSG => 'حین دریافت مشخصات محصول خطایی بوجود آمد');
+    }
+    else
+        $_SESSION[ERROR] = array(ERR_TITLE => "خطای اتصال", ERR_MSG => 'برقراری ارتباط با دیتابیس ناموفق بود!');
+
+    return null;
+}
 gen_dirtree( MEDIA_DIR . IMG_DIR );
