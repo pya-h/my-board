@@ -29,6 +29,7 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 product-grid">
                 <?php
+                    global $connection;
                     $query = mysqli_query($connection, 'SELECT * FROM ' . TABLE_PRODUCTS . ' WHERE ' . PRODUCT_AVAILABLE . "=1");
                     while( $product = mysqli_fetch_array($query)):
                 ?>

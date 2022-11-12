@@ -1,10 +1,9 @@
 <?php
-
 $data = array("merchant_id" => ZARINPAL_MERCHANT_ID,
     "amount" => $_SESSION[ORDER_COST],
-    "callback_url" => ROUTE_ZARINPAL_VERIFY,
-    "description" => "خرید " . $_SESSION[ORDER_PRODUCT],
-    "metadata" => [ "email" => $_SESSION[USER_EMAIL]],
+    "callback_url" => ROUTE_LOCALROOT . ROUTE_ZARINPAL_VERIFY,
+    "description" => "خرید " . $_SESSION[ORDER_PRODUCT_NAME],
+    "metadata" => ["email" => $_SESSION[USER_EMAIL]],
 );
 $jsonData = json_encode($data);
 $ch = curl_init(LINK_ZARINPALL_REQUEST);
@@ -26,8 +25,11 @@ if ($err)
     $_SESSION[ERROR] = [ERR_TITLE => "خطا در پرداخت", ERR_MSG => $err, ERR_IMG => null];
 else {
     if (empty($result['errors']))
-        if ($result['data']['code'] == 100)
+        if ($result['data']['code'] == 100) {
+
             header('Location: https://www.zarinpal.com/pg/StartPay/' . $result['data']["authority"]);
-    else
-         $_SESSION[ERROR] = [ ERR_TITLE => $result['errors']['code'] , ERR_MSG => $result['errors']['message']];
+            //header('Location: ' . ROUTE_ZARINPAL_VERIFY);
+        }
+        else
+            $_SESSION[ERROR] = [ERR_TITLE => $result['errors']['code'], ERR_MSG => $result['errors']['message']];
 }

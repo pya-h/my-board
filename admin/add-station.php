@@ -11,6 +11,8 @@
         }
         require_once __DIR__ . '/../common/sidebar.php';
         require_once __DIR__ . '/../common/topnav.php';
+        login2panel();
+
     ?>
     <!--end header -->
     <!--start page wrapper -->

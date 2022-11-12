@@ -1,5 +1,4 @@
 <?php
-
 $Authority = $_GET['Authority'];
 $data = array("merchant_id" => ZARINPAL_MERCHANT_ID, "authority" => $Authority, "amount" => $_SESSION[ORDER_COST]);
 $jsonData = json_encode($data);
@@ -22,12 +21,24 @@ $result = json_decode($result, true);
 if ( $_SESSION[ERROR]) {
     echo $_SESSION[ERROR][ERR_TITLE] . " <br> " .  $_SESSION[ERROR][ERR_MSG];
 } else {
-    if ($result['data']['code'] == 100)
-        echo "<h2>پرداخت با موفقیت انجام شد. <br> کد رهگیری: " . $result['data']['ref_id'] . "</h2>";
+    global $connection;
+    if (array_key_exists('data', $result) && array_key_exists('code', $result['data'])) {
+        if ($result['data']['code'] == 100) {
+            $order_id = strval($result['data']['ref_id']);
+            $order_cost = $_SESSION[ORDER_COST];
+            $order_product_id = $_SESSION[ORDER_PRODUCT_ID];
+            $date = date("Y-m-d h:i:sa");
+            echo "<h2>پرداخت با موفقیت انجام شد. <br> کد رهگیری: " . $order_id . "</h2>";
+            $query = "INSERT INTO `" . TABLE_ORDERS . "` (" . ORDER_ID . ", " . ORDER_PRODUCT_ID . ", " . ORDER_COST .
+                ") values ('$order_id', $order_product_id, $order_cost)";
+            $result = $connection->query($query);
+            $_SESSION[RES] = '<p class="success">سفارش موردنظر با موفقیت ثبت شد.</p>';
+        } else
+            echo "<p class='error'>خرید کالا ناموفق بود!</p>";
+    }
     else
-        echo  "<h2>" . $_SESSION[ERROR][ERR_TITLE] . " <br> " .  $_SESSION[ERROR][ERR_MSG] . "</h2>";
+        echo "<p class='error'>پاسخ دریافت شده از زرین پال نامعتبر است!</p>";
 }
-
 // unset session values
-foreach ([ORDER_COST, ORDER_PRODUCT, ERROR] as $key)
+foreach ([ORDER_COST, ORDER_PRODUCT_NAME, ERROR] as $key)
     unset($_SESSION[$key]);

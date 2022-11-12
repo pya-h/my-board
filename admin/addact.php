@@ -39,8 +39,22 @@ function uploadPhoto($img_file){
 
 function network_default_setting($network){
     switch ($network) {
+        case "kcp":
+            return ["header" => ["type" => "none"], "seed" => "QZHSjaxi5h", 'mtu' => 1350, 'tti' => 20,
+                    "uplinkCapacity" => 5, "downlinkCapacity" => 20, "congestion" => false,
+                    "readBufferSize" => 2, "writeBufferSize" => 2
+                ];
+        case "ws":
+            return ["headers" => [], "path" => "/"];
+        case "http":
+            return ["host" => [], "path" => "/"];
+        case "quic":
+            return ["security" => "none", "key" => "", "header" => ["type" => "none"]];
+        case "grpc":
+            return ["serviceName" => ""];
         case "tcp":
-        case default:
+        default:
+            return ["header" => ["type" => "none"]];
 
     }
 }
@@ -97,21 +111,47 @@ else if(isset($_POST['newStationSubmit'])) {
         $payload["enable"] = false;
     }
     try {
-        $straight_fields = ['remark', 'protocol', 'listen', 'port', 'total'];
+        $straight_fields = ['remark', 'protocol', 'listen'];
         foreach ($straight_fields as $skey)
             $payload[$skey] = $_POST[$skey];
+        foreach (['port', 'total'] as $item) {
+            $payload[$item] = intval($_POST[$item]);
+        }
     } catch (Exception $ex) {
         $_SESSION[RES] = "Error: $ex";
     }
-    $payload["setting"] = ["clients" => [ ["id" => $_POST["id"], "alterId" => $_POST["alterId"] ] ], "disableInsecureEncryption" => false];
+    $payload["setting"] = ["clients" => [ ["id" => $_POST["id"], "alterId" => intval($_POST["alterId"]) ] ], "disableInsecureEncryption" => false];
     $network = strtolower($_POST["network"]);
     $network_setting = network_default_setting($network);
     $payload["streamSettings"] = ["network" => $network, "security" => "none", ]; // not completed yet!
-    $payload["streamSettings"] = ["enabled" =>  array_key_exists("sniffing", $_POST) && (strtolower($_POST["sniffing"] || strtolower($_POST["sniffing"]) === "on")),
+    $payload["streamSettings"][$network . "Setting"] = ["network" => $network, "security" => "none", ]; // not completed yet!
+    $payload["sniffing"] = ["enabled" =>  array_key_exists("sniffing", $_POST) && (strtolower($_POST["sniffing"] || strtolower($_POST["sniffing"]) === "on")),
                                     "destOverride" => ["http", "tls"]
         ];
 
-    var_dump($payload);
+    $payload["streamSettings"] = json_encode($payload["streamSettings"]);
+    $payload["sniffing"] = json_encode($payload["sniffing"]);
+
+    $jsonData = json_encode($payload);
+
+    $ch = curl_init("http://91.149.255.31:54321/xui/inbound/add");
+    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($jsonData),
+        "Cookie: " . $_SESSION[COOKIE] ));
+
+    $result = curl_exec($ch);
+    $err = curl_error($ch);
+    $result = json_decode($result, true, JSON_PRETTY_PRINT);
+    curl_close($ch);
+    if($result["success"])
+         $_SESSION[RES] = "<p class=\"success\">Successful: " . $result["msg"] . "</p>";
+    else
+        $_SESSION[RES] = "<p class=\"error\">ERROR: " . $result["msg"] . "</p>";
 
 }
-//header("Location: " . ROUTE_ADD_STATION);
+header("Location: " . ROUTE_ADD_STATION);

@@ -95,6 +95,10 @@
                     require_once __DIR__ . '/purchase/manage.php';
                     break;
                 }
+                else if($arr_route[0] === ROUTE_ZARINPAL_VERIFY){
+                    require_once __DIR__ . '/purchase/zarinpal/verification.php';
+                    break;
+                }
             }
 
             // UNKNOWN PAGE
