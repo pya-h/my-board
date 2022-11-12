@@ -14,7 +14,7 @@ defined('DB_NAME') or define('DB_NAME','vps-db');
 defined('TABLE_USERS') or define('TABLE_USERS', 'users');
 defined('USER_EMAIL') or define('USER_EMAIL', 'email');
 defined('USER_PASS') or define('USER_PASSWORD', 'pass');
-defined('USER_ID') or define('USER_ID', 'pass');
+defined('USER_ID') or define('USER_ID', 'id');
 defined('USER_ADMIN') or define('USER_ADMIN', 'admin');
 defined('USER_FULLNAME') or define('USER_FULLNAME', 'name');
 
@@ -203,4 +203,22 @@ function short_size($bytes) {
     }
 
     return sprintf("%.2f %s", $bytes, $names[$idx]);
+}
+
+function redirect($url)
+{
+    if (!headers_sent())
+    {
+        header('Location: '.$url);
+        exit;
+    }
+    else
+    {
+        echo '<script type="text/javascript">';
+        echo 'window.location.href="'.$url.'";';
+        echo '</script>';
+        echo '<noscript>';
+        echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+        echo '</noscript>'; exit;
+    }
 }

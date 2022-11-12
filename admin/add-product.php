@@ -6,7 +6,7 @@
     <!--start header -->
     <?php
         if (!$_SESSION[USER_ADMIN]) {
-            header("Location: " . ROUTE_FORBIDDEN);
+            redirect(ROUTE_FORBIDDEN);
             return;
         }
         require_once __DIR__ . '/../common/sidebar.php';

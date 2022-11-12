@@ -154,4 +154,4 @@ else if(isset($_POST['newStationSubmit'])) {
         $_SESSION[RES] = "<p class=\"error\">ERROR: " . $result["msg"] . "</p>";
 
 }
-header("Location: " . ROUTE_ADD_STATION);
+redirect(ROUTE_ADD_STATION);

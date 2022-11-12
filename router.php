@@ -13,7 +13,7 @@
             if(isset($_SESSION[USER_ID]) && $_SESSION[USER_ID] && isset($_SESSION[USER_EMAIL]) && $_SESSION[USER_EMAIL])
                 require_once __DIR__ . '/home.php';
             else
-                header("Location: " . ROUTE_SIGN_IN);
+                redirect(ROUTE_SIGN_IN);
             break;
 
 
@@ -30,7 +30,7 @@
             unset($_SESSION[USER_EMAIL]);
             unset($_SESSION[USER_FULLNAME]);
             unset($_SESSION[USER_ADMIN]);
-            header("Location: " . ROUTE_SIGN_IN);
+            redirect(ROUTE_SIGN_IN);
             break;
 
         case ROUTE_SIGN_UP:

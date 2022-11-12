@@ -37,9 +37,9 @@ if(isset($_POST['signinAttemp'])){
 
     // take action:
     if(!$logged_in)
-        header("Location: " . ROUTE_SIGN_IN);
+        redirect(ROUTE_SIGN_IN);
     else
-        header("Location: /");
+        redirect(ROUTE_ROOT);
 }
 else if(isset($_POST['signupAttemp'])){
     if($connection) {
@@ -76,5 +76,5 @@ else if(isset($_POST['signupAttemp'])){
     else {
         $_SESSION['response'] = '<p class="error">اتصال به سرور موفقیت آمیز نبود!</p>';
     }
-    header("Location: " . ROUTE_SIGN_UP);
+    redirect(ROUTE_SIGN_UP);
 }

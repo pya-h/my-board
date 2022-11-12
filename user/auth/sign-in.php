@@ -1,7 +1,7 @@
 
 <?php
     if(isset($_SESSION[USER_ID]) && isset($_SESSION[USER_EMAIL]) && $_SESSION[USER_EMAIL] && $_SESSION[USER_ID])
-        header("Location: /");
+        redirect(ROUTE_ROOT)
 ?>
 <!--wrapper-->
 <div dir="rtl" class="wrapper">

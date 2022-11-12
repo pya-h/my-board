@@ -43,4 +43,4 @@ if ( $_SESSION[ERROR]) {
 foreach ([ORDER_COST, ORDER_PRODUCT_NAME, ERROR] as $key)
     unset($_SESSION[$key]);
 
-header("Location: " . ROUTE_ORDERS);
+redirect(ROUTE_ORDERS);
