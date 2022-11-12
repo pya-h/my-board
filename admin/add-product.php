@@ -51,9 +51,9 @@
                   <div class="row">
                       <div dir="rtl" class="col-md-6 mx-auto">
                           <?php
-                              if(isset($_SESSION['final_status'])){
-                                  echo $_SESSION['final_status'];
-                                  unset($_SESSION['final_status']);
+                              if(isset($_SESSION[RES])){
+                                  echo $_SESSION[RES];
+                                  unset($_SESSION[RES]);
                               }
                           ?>
                       </div>

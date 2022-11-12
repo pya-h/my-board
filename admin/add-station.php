@@ -65,7 +65,7 @@
                                    <div class="row mb-4">
                                        <div class="col-6">
                                            Protocol
-                                           <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                           <select name="protocol" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
                                                <option value="vmess" selected>vmess</option>
                                                <option value="vless">vless</option>
                                                <option value="trojan">trojan</option>
@@ -73,13 +73,12 @@
                                                <option value="dokodemo-door">dokodemo-door</option>
                                                <option value="socks">socks</option>
                                                <option value="http">http</option>
-
                                            </select>
 
                                        </div>
                                        <div class="col">
                                            Listen IP:
-                                           <input type="text" class="form-control" name="monitorip" id="txtMonitorIP" placeholder="Monitor IP">
+                                           <input type="text" class="form-control" name="listen" id="txtMonitorIP" placeholder="Monitor IP">
                                        </div>
                                    </div>
                                    <div class="row mb-4">
@@ -102,7 +101,7 @@
                                        </div>
                                    </div>
 
-                                 <hr />
+                                   <hr />
                                    <div class="row mb-4">
                                        <div class="col-6">
                                            id:
@@ -113,6 +112,28 @@
                                            <input type="number" class="form-control" name="alterId" id="txtTotalFlow" placeholder="Alter ID">
                                        </div>
                                    </div>
+                                   <div class="row mb-4">
+                                       <div class="col-md-6">
+                                           Transmission (Network Type):
+                                           <select name="network" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                               <option value="tcp" selected>tcp</option>
+                                               <option value="kcp">kcp</option>
+                                               <option value="ws">ws</option>
+                                               <option value="http">http</option>
+                                               <option value="quic">quic</option>
+                                               <option value="grpc">grpc</option>
+                                           </select>
+                                       </div>
+                                       <div class="col mx-auto">
+                                           <div class="form-check form-switch col mt-3">
+                                               <label class="form-check-label text-center mt-2 text-right" for="checkSniffing">Sniffing</label>
+                                               <input name="sniffing" class="w-25 h-50 mx-lg-5 mx-1 px-3 form-check-input" type="checkbox" checked id="checkSniffing">
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <hr />
+                                   <div class="row my-4">
+                                       <button type="submit" name="newStationSubmit" class="btn btn-secondary btn-block btn-lg px-5 mx-1 xbo">Add</button>
                                    </div>
                               </div>
                           </div>
