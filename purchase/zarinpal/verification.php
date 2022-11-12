@@ -34,11 +34,13 @@ if ( $_SESSION[ERROR]) {
             $result = $connection->query($query);
             $_SESSION[RES] = '<p class="success">سفارش موردنظر با موفقیت ثبت شد.</p>';
         } else
-            echo "<p class='error'>خرید کالا ناموفق بود!</p>";
+            $_SESSION[RES] = "<p class='error'>خرید کالا ناموفق بود!</p>";
     }
     else
-        echo "<p class='error'>پاسخ دریافت شده از زرین پال نامعتبر است!</p>";
+        $_SESSION[RES] = "<p class='error'>پاسخ دریافت شده از زرین پال نامعتبر است!</p>";
 }
 // unset session values
 foreach ([ORDER_COST, ORDER_PRODUCT_NAME, ERROR] as $key)
     unset($_SESSION[$key]);
+
+header("Location: " . ROUTE_ORDERS);

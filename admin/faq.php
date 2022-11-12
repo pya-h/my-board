@@ -20,24 +20,12 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="ms-auto">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-light">Settings</button>
-                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-                            <a class="dropdown-item" href="javascript:;">Another action</a>
-                            <a class="dropdown-item" href="javascript:;">Something else here</a>
-                            <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!--end breadcrumb-->
             <div class="row">
                 <div class="col-12 col-lg-9 mx-auto">
                     <div class="text-center">
-                        <h5 class="mb-0 text-uppercase">Frequently asked questions (FAQ<small class="text-lowercase">s</small>)</h5>
+                        <h5 class="mb-0 text-uppercase">سوالات مکرر</h5>
                         <hr/>
                     </div>
                     <div class="card">
@@ -50,7 +38,6 @@
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <p>بله میتونید</p>
-                                            <p><strong>Example: </strong>Shut up and get to the point!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +48,6 @@
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <p>بله روی اندروید و آیفون و کامپیوتر به صورت کامل</p>
-                                            <p><strong>Example: </strong>Okay, I like a challenge. Is that a cooking show? No argument here.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +60,6 @@
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <p>خیر به هیچ وجه !</p>
-                                            <p><strong>Example: </strong>Actually, that's still true. Well, let's just dump it in the sewer and say we delivered it.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +72,6 @@
                                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <p>فعلا خیر اما در آینده بله</p>
-                                            <p><strong>Example: </strong>Cruel though they may be...</p>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +79,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <h5 class="mb-0 text-uppercase">Frequently asked questions (FAQ<small class="text-lowercase">s</small>)</h5>
+                        <h5 class="mb-0 text-uppercase">سوالات مکرر</h5>
                         <hr/>
                     </div>
                     <div class="card">
@@ -108,7 +92,6 @@
                                     <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample2">
                                         <div class="accordion-body">
                                             <p>خیر برای سرور تستی وجود ندارد چون به صورت کامل رزرو میشود !</p>
-                                            <p><strong>Example: </strong>I'm Santa Claus! Pansy. That's a popular name today. Little "e", big "B"?</p>
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +104,6 @@
                                     <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample2">
                                         <div class="accordion-body">
                                             <p>در صورت هر گونه اشکال و مشکل در سرور ها هزینه شما برگشت داده میشود !</p>
-                                            <p><strong>Example: </strong>I usually try to keep my sadness pent up inside where it can fester quietly as a mental illness.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +116,6 @@
                                     <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample2">
                                         <div class="accordion-body">
                                             <p>بله با پشتیبانی در ارتباط باشید</p>
-                                            <p><strong>Example: </strong>Man, I'm sore all over. I feel like I just went ten rounds with mighty Thor.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +128,6 @@
                                     <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample2">
                                         <div class="accordion-body">
                                             <p>شما میتوانید برای ارتقا باپشتیبانی در ارتباط باشید</p>
-                                            <p><strong>Example: </strong>Tell them I hate them.</p>
                                         </div>
                                     </div>
                                 </div>

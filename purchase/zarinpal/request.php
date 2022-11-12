@@ -26,7 +26,6 @@ if ($err)
 else {
     if (empty($result['errors']))
         if ($result['data']['code'] == 100) {
-
             header('Location: https://www.zarinpal.com/pg/StartPay/' . $result['data']["authority"]);
             //header('Location: ' . ROUTE_ZARINPAL_VERIFY);
         }

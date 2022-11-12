@@ -25,14 +25,19 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-lg-flex align-items-center mb-4 gap-3">
-                        <div class="position-relative">
-                            <input type="text" class="form-control ps-5 radius-30" placeholder="Search Order"> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
+                        <div dir="rtl" class="position-relative">
+                            <?php
+                                if(isset($_SESSION[RES])){
+                                    echo $_SESSION[RES];
+                                    unset($_SESSION[RES]);
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <?php $is_admin_here = isset($_SESSION[USER_ADMIN]) && $_SESSION[USER_ADMIN]; ?>
                         <table class="table mb-0">
-                            <thead class="table-light">
+                            <thead class="table-light text-center">
                                 <tr>
                                     <th>شماره</th>
                                     <th>نام کالا</th>
@@ -43,7 +48,7 @@
                                     <?php if ($is_admin_here) echo "<th>تایید</th>" ?>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                             <?php
                                 global $connection;
                                 $query = mysqli_query($connection, 'SELECT * FROM ' . TABLE_ORDERS);
