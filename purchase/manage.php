@@ -3,7 +3,7 @@ try {
     $product = get_product(
         get_url_param($_SERVER['REQUEST_URI'], "id")
     );
-    $_SESSION[ORDER_COST] = $product[PRODUCT_PRICE];
+    $_SESSION[ORDER_COST] = $product[PRODUCT_PRICE] * 10; //toman => rials
     $_SESSION[ORDER_PRODUCT] = $product[PRODUCT_TITLE];
     // some other stuff matbe
     header("Location: " . ROUTE_ZARINCALL);

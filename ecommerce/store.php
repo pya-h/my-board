@@ -8,7 +8,7 @@
         <div class="page-content">
             <?php
                 if (isset($_SESSION[USER_ADMIN]) && $_SESSION[USER_ADMIN]) {
-                    $new_product = ROUTE_NEW_PRODUCT; // for using in _ADMIN_MENU string
+                    $new_product = ROUTE_ADD_PRODUCT; // for using in _ADMIN_MENU string
                     echo <<<_NEW_PRODUCT_BUTTON
                             <div class="row">
                                 <div class="col-12">

@@ -3,6 +3,7 @@
     require_once '../common/config.php';
     $_SESSION['final_status'] = null;
     $_SESSION['upload_status'] = null;
+    global $connection;
 
     function uploadPhoto($img_file){
         // get details of the uploaded file
@@ -49,7 +50,8 @@
                         $_SESSION['final_status'] = '<p class="error">فیلد عنوان نمی تواند خالی باشد!</p>';
                     else {
                         $img_filename = null;
-                        if (isset($_FILES['selectedImageFile'])) {
+                     //   var_dump($_FILES);
+                        if (isset($_FILES['selectedImageFile']) && $_FILES['selectedImageFile'] && trim($_FILES['selectedImageFile']["name"])) {
                             if ($_FILES['selectedImageFile']['error'] === UPLOAD_ERR_OK) {
                                 $img_filename = uploadPhoto($_FILES['selectedImageFile']);
                             } else {
@@ -79,4 +81,4 @@
     }
 
 
-header("Location: " . ROUTE_NEW_PRODUCT);
+header("Location: " . ROUTE_ADD_PRODUCT);

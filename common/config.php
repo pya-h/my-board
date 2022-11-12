@@ -40,23 +40,28 @@ defined('ROUTE_RESET_PASSWORD') or define('ROUTE_RESET_PASSWORD', ROUTE_ROOT . '
 
 defined('ROUTE_STORE') or define('ROUTE_STORE', ROUTE_ROOT . 'store');
 defined('ROUTE_PRODUCT') or define('ROUTE_PRODUCT', ROUTE_ROOT . 'store/product');
-defined('ROUTE_NEW_PRODUCT') or define('ROUTE_NEW_PRODUCT', ROUTE_ROOT . 'newproduct');
 defined('ROUTE_ORDERS') or define('ROUTE_ORDERS', ROUTE_ROOT . 'orders');
 defined('ROUTE_FAQ') or define('ROUTE_FAQ', ROUTE_ROOT . 'faq');
 defined('ROUTE_SUPPORT') or define('ROUTE_SUPPORT', ROUTE_ROOT . 'support');
+defined('ROUTE_FORBIDDEN') or define('ROUTE_FORBIDDEN', ROUTE_ROOT . 'forbidden');
+
+// admn panel routes
+defined('ADMIN_NICKNAME') or define('ROUTE_ADMIN', 'submax/');
+defined('ROUTE_ADD_ENTRY') or define('ROUTE_ADD_STATION', ROUTE_ROOT . ROUTE_ADMIN . '+station');
+defined('ROUTE_NEW_PRODUCT') or define('ROUTE_ADD_PRODUCT', ROUTE_ROOT . ROUTE_ADMIN . '+product');
 
 defined('MEDIA_DIR') or define('MEDIA_DIR', ROUTE_ROOT . 'media');
 defined('IMG_DIR') or define('IMG_DIR', ROUTE_ROOT . 'img');
 
 // purchase
-defined('ROUTE_PURCHASE') or define('ROUTE_PURCHASE', ROUTE_ROOT . 'purchase');
+defined('ROUTE_PURCHASE') or define('ROUTE_PURCHASE', ROUTE_ROOT . 'store/purchase');
 
 // purchase by zarinpal
 defined('LINK_ZARINPALL_REQUEST') or define('LINK_ZARINPALL_REQUEST', 'https://api.zarinpal.com/pg/v4/payment/request.json');
 defined('LINK_ZARINPALL_VERIFY') or define('LINK_ZARINPALL_VERIFY', 'https://api.zarinpal.com/pg/v4/payment/verify.json');
 
-defined('ROUTE_ZARINCALL') or define('ROUTE_ZARINCALL', ROUTE_ROOT . 'purchase/zarinpal');
-defined('ROUTE_ZARINPAL_VERIFY') or define('ROUTE_ZARINPAL_VERIFY', ROUTE_ROOT . 'purchase/verify');
+defined('ROUTE_ZARINCALL') or define('ROUTE_ZARINCALL', ROUTE_PURCHASE . '/zarinpal');
+defined('ROUTE_ZARINPAL_VERIFY') or define('ROUTE_ZARINPAL_VERIFY', ROUTE_PURCHASE . '/verify');
 defined('ZARINPAL_MERCHANT_ID') or define('ZARINPAL_MERCHANT_ID', "21b1695f-b0a4-479f-8df2-f79fbe91d285");
 
 defined('ORDER') or define('ORDER', 'order');
@@ -67,6 +72,7 @@ defined('ERROR') or define('ERROR', 'err');
 defined('ERR_TITLE') or define('ERR_TITLE', 'title');
 defined('ERR_MSG') or define('ERR_MSG', 'msg');
 defined('ERR_IMG') or define('ERR_IMG', 'img');
+defined('RES') or define('RES', 'res');
 
 // *************************** COMMON METHODS ****************************
 

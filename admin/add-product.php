@@ -4,8 +4,16 @@
     <!--sidebar wrapper -->
     <!--end sidebar wrapper -->
     <!--start header -->
-    <?php require_once __DIR__ . '/../common/sidebar.php'; ?>
-    <?php require_once __DIR__ . '/../common/topnav.php'; ?>
+    <?php
+        if (!$_SESSION[USER_ADMIN]) {
+            header("Location: " . ROUTE_FORBIDDEN);
+            return;
+        }
+        require_once __DIR__ . '/../common/sidebar.php';
+        require_once __DIR__ . '/../common/topnav.php';
+
+        unset($_FILES);
+    ?>
     <!--end header -->
     <!--start page wrapper -->
     <div class="page-wrapper">
@@ -41,7 +49,7 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col-md-6 mx-auto">
+                      <div dir="rtl" class="col-md-6 mx-auto">
                           <?php
                               if(isset($_SESSION['final_status'])){
                                   echo $_SESSION['final_status'];

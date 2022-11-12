@@ -14,7 +14,7 @@
         <?php
 
         if (isset($_SESSION[USER_ADMIN]) && $_SESSION[USER_ADMIN]) {
-            $route_new_product = ROUTE_NEW_PRODUCT; // for using in _ADMIN_MENU string
+            $routes = [ROUTE_ADD_PRODUCT, ROUTE_ADD_STATION]; // for using in _ADMIN_MENU string
             echo <<<_ADMIN_MENU
                             <li>
                                 <a href="javascript:;" class="has-arrow">
@@ -23,7 +23,8 @@
                                     <div class="menu-title">ادمین پنل</div>
                                 </a>
                                 <ul>
-                                    <li> <a href="$route_new_product"><i class="bx bx-right-arrow-alt"></i>کالای جدید</a></li>
+                                    <li> <a href="$routes[0]"><i class="bx bx-right-arrow-alt"></i>کالای جدید</a></li>
+                                    <li> <a href="$routes[1]"><i class="bx bx-right-arrow-alt"></i>استیشن جدید</a></li>
                                 </ul>
                             </li>
                     _ADMIN_MENU;

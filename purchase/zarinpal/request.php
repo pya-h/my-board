@@ -23,7 +23,7 @@ $result = json_decode($result, true, JSON_PRETTY_PRINT);
 curl_close($ch);
 
 if ($err)
-    $_SESSION[ERROR] = [ERR_TITLE => "خطا در پرداخت", ERR_MSG => $err, ERR_IMG => null, CODE];
+    $_SESSION[ERROR] = [ERR_TITLE => "خطا در پرداخت", ERR_MSG => $err, ERR_IMG => null];
 else {
     if (empty($result['errors']))
         if ($result['data']['code'] == 100)

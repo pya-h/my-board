@@ -1,4 +1,11 @@
 <?php
+    function show_error($code, $msg) {
+        http_response_code($code);
+        $_SESSION[ERROR] = [ERR_TITLE => strval($code), ERR_MSG => $msg, ERR_IMG => "/assets/images/errors-images/$code.png" ];
+        require __DIR__ . '/errors/index.php';
+        unset($_SESSION[ERROR]);
+    }
+
     $request = $_SERVER['REQUEST_URI'];
     switch($request){
         case ROUTE_ROOT:
@@ -45,20 +52,20 @@
             require_once __DIR__ . '/ecommerce/orders.php';
             break;
 
-        case ROUTE_NEW_PRODUCT:
+
+        // admin routes
+        case ROUTE_ADD_PRODUCT:
             require_once __DIR__ . '/admin/add-product.php';
+            break;
+
+        case ROUTE_ADD_STATION:
+            require_once __DIR__ . '/admin/add-station.php';
             break;
 
 
         // QUESTION & SUPPORT SECTION
         case ROUTE_FAQ:
             require_once __DIR__ . '/admin/faq.php';
-            break;
-
-
-        // PURCHASE SECTION
-        case ROUTE_PURCHASE:
-            require_once __DIR__ . '/purchase/manage.php';
             break;
 
             // BY ZARINPAL
@@ -70,6 +77,10 @@
             break;
 
 
+        case ROUTE_FORBIDDEN:
+            show_error(403, "شما مجاز به مشاهده این صفحه نیستید.");
+            break;
+
         // OTHERS
         default:
             // PRODUCT DETAILS SECTION
@@ -79,12 +90,14 @@
                     require_once __DIR__ . '/ecommerce/product.php';
                     break;
                 }
+                else if($arr_route[0] === ROUTE_PURCHASE){
+                    // PURCHASE SECTION
+                    require_once __DIR__ . '/purchase/manage.php';
+                    break;
+                }
             }
 
             // UNKNOWN PAGE
-            http_response_code(404);
-            $_SESSION[ERROR] = array(ERR_MSG => "صفحه مورد نظر یافت نشد!", ERR_TITLE => "404", ERR_IMG => "https://cdn.searchenginejournal.com/wp-content/uploads/2019/03/shutterstock_1338315902.png");
-            require __DIR__ . '/errors/index.php';
-            unset($_SESSION[ERROR]);
+            show_error(404, "صفحه مورد نظر یافت نشد!");
             break;
     }

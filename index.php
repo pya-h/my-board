@@ -10,7 +10,7 @@
     require_once __DIR__ . '/common/config.php';
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="fa">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -39,7 +39,7 @@
 </head>
 <body class="bg-theme bg-theme2">
 <?php
-require_once 'router.php';
+require 'router.php';
 ?>
 </body>
 </html>

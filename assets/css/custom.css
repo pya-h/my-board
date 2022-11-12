@@ -181,3 +181,13 @@ button[type=submit]:hover {
 .file-box-input:hover #labelForInputImage {
     animation: text-vibrate-effect 1s linear infinite;
 }
+input[type="checkbox"]:checked {
+    background-color: #0f8107;
+}
+.addstation-card input, .addstation-card  select {
+    transition: background-color 650ms ease-in;
+}
+
+.addstation-card input:hover, .addstation-card input:not([type="checkbox"]):focus, .addstation-card select:hover, .addstation-card select:focus{
+    background-color: darkorchid;
+}

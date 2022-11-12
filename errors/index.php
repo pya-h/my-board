@@ -27,8 +27,8 @@
                                     echo <<<_ERR
                                         <h2 style="border-bottom: 3px solid darkred; color: darkred"  class="font-weight-bold display-4 my-4">$title</h2>
                                         <p style="font-size: 18px; font-weight: bold" class="text-info">$msg </p>
-                                        <div class="mt-5"> <a href="$root" class="btn btn-light btn-lg px-md-5 radius-30">خانه</a>
-                                            <a  href="$root"  class="btn btn-light btn-lg ms-3 px-md-5 radius-30">صفحه قبلی</a>
+                                        <div class="mt-5"> <a href="$root" class="btn cool-anchor btn-light btn-lg px-md-5 radius-30">خانه</a>
+                                            <button onclick="history.back()" class="btn cool-anchor btn-light btn-lg ms-3 px-md-5 radius-30">صفحه قبلی</button>
                                         </div>
                                     _ERR;
                                 }
@@ -39,8 +39,8 @@
                     </div>
                     <?php if($img)
                       echo <<<_IMG
-                            <div class="col-xl-7">
-                                <img src="$img" class="img-fluid" alt="تصویر ارور">
+                            <div class="col-xl-7" >
+                                <img src="$img" style="border-radius: 15px" class="img-fluid" alt="تصویر ارور">
                             </div>
                        _IMG;
                     ?>
