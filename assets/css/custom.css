@@ -1,17 +1,12 @@
 @font-face {
     font-family: "AppFont";
-    src: url("../fonts/IranianSans.ttf") format("ttf");
+    src: url("../fonts/vazir/Vazir-Regular.eot") format("eot"),
+    url("../fonts/vazir/Vazir-Regular.ttf") format("ttf"),
+    url("../fonts/vazir/Vazir-Regular.woff") format("woff");
     font-weight: 500;
     font-style: normal;
 }
-@font-face {
-    font-family: "B1";
-    src: url("../fonts/b1/BYekan-webfont.eot") format("eot"),
-        url("../fonts/b1/BYekan-webfont.ttf") format("ttf"),
-        url("../fonts/b1/BYekan-webfont.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
+
 * {
     font-family: "AppFont", "B1", sans-serif !important;
 }

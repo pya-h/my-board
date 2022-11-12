@@ -11,8 +11,15 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <?php
 
+        <li>
+            <a href="<?php echo ROUTE_ROOT; ?>">
+                <div class="parent-icon"><i class="bx bx-home-circle"></i>
+                </div>
+                <div class="menu-title">خانه</div>
+            </a>
+        </li>
+        <?php
         if (isset($_SESSION[USER_ADMIN]) && $_SESSION[USER_ADMIN]) {
             $routes = [ROUTE_ADD_PRODUCT, ROUTE_ADD_STATION]; // for using in _ADMIN_MENU string
             echo <<<_ADMIN_MENU
