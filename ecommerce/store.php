@@ -35,7 +35,7 @@
                 ?>
                         <a href="<?php echo make_url_param(ROUTE_PRODUCT ,PRODUCT_ID, $product[PRODUCT_ID]); ?>" class="col product-card">
                             <div dir="rtl" class="card h-100">
-                                <img src="<?php echo $product[PRODUCT_IMAGE]; ?>" class="card-img-top" alt="...">
+                                <img src="<?php echo $product[PRODUCT_IMAGE] ? $product[PRODUCT_IMAGE] : NO_IMAGE; ?>" class="card-img-top" alt="...">
                                 <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-10%</span></div>
                                 <div class="card-body">
                                     <h6 class="card-title cursor-pointer"><?php echo $product[PRODUCT_TITLE]; ?></h6>

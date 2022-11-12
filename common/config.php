@@ -31,7 +31,7 @@ defined('PRODUCT_MAX_USERS') or define('PRODUCT_MAX_USERS', 'max_users');
 defined('PRODUCT_IMAGE') or define('PRODUCT_IMAGE', 'img');
 
 // ROUTES
-defined('ROUTE_LOCALROOT') or define('ROUTE_LOCALROOT',  "http://localhost"); // whatever.xxx/
+defined('ROUTE_WEBSITE_URL') or define('ROUTE_WEBSITE_URL',  "http://localhost"); // whatever.xxx/
 defined('ROUTE_ROOT') or define('ROUTE_ROOT', '/'); // whatever.xxx/
 defined('ROUTE_SIGN_IN') or define('ROUTE_SIGN_IN', ROUTE_ROOT . 'signin');
 defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', ROUTE_ROOT . 'signup');
@@ -48,8 +48,8 @@ defined('ROUTE_FORBIDDEN') or define('ROUTE_FORBIDDEN', ROUTE_ROOT . 'forbidden'
 defined('ROUTE_VALIDATE_ORDER') or define('ROUTE_VALIDATE_ORDER', ROUTE_ROOT . 'validate');
 
 // admn panel routes
-defined('ADMIN_NICKNAME') or define('ROUTE_ADMIN', 'submax/');
-defined('ROUTE_ADD_ENTRY') or define('ROUTE_ADD_STATION', ROUTE_ROOT . ROUTE_ADMIN . '+station');
+defined('ROUTE_ADMIN') or define('ROUTE_ADMIN', 'submax/');
+defined('ROUTE_ADD_STATION') or define('ROUTE_ADD_STATION', ROUTE_ROOT . ROUTE_ADMIN . '+station');
 defined('ROUTE_NEW_PRODUCT') or define('ROUTE_ADD_PRODUCT', ROUTE_ROOT . ROUTE_ADMIN . '+product');
 
 defined('MEDIA_DIR') or define('MEDIA_DIR', ROUTE_ROOT . 'media');
@@ -84,6 +84,8 @@ defined('ORDER_COST') or define('ORDER_COST', 'cost');
 defined('ORDER_STATUS') or define('ORDER_STATUS', 'status');
 defined('ORDER_DATE') or define('ORDER_DATE', 'date');
 defined('ORDER_TRANSACTION_ID') or define('ORDER_TRANSACTION_ID', 'transaction_id');
+
+defined('NO_IMAGE') or define('NO_IMAGE', "../assets/images/no-img.png");
 
 // *************************** COMMON METHODS ****************************
 
@@ -134,7 +136,10 @@ function get_product($product_id) {
 
         if($result)
             if($result->num_rows > 0) {
-                return $result->fetch_array(MYSQLI_ASSOC);
+                $product = $result->fetch_array(MYSQLI_ASSOC);
+                if(!$product[PRODUCT_IMAGE])
+                    $product[PRODUCT_IMAGE] = NO_IMAGE;
+                return $product;
             }
             else
                 $_SESSION[ERROR] = array(ERR_TITLE => "کالای ناموجود", ERR_MSG => 'چنین کالایی وجود خارجی ندارد!');

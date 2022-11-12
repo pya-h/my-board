@@ -3,18 +3,14 @@
     <div class="authentication-forgot d-flex align-items-center justify-content-center">
         <div class="card forgot-box">
             <div class="card-body">
-                <div class="p-4 rounded  border">
+                <div dir="rtl" class="p-4 rounded  border">
                     <div class="text-center">
                         <img src="../../assets/images/icons/forgot-2.png" width="120" alt="" />
                     </div>
-                    <h4 class="mt-5 font-weight-bold">Forgot Password?</h4>
-                    <p class="">Enter your registered email ID to reset the password</p>
-                    <div class="my-4">
-                        <label class="form-label">Email id</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="example@user.com" />
-                    </div>
+                    <h4 class="mt-5 font-weight-bold">رمزتان را فراموش کرده اید؟</h4>
+                    <p class="">لطفا جهت بازیابی حساب کاربری خود، به پشتیبانی مراجعه کنید.</p>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-light btn-lg">Send</button> <a href="sign-in.php" class="btn btn-light btn-lg"><i class='bx bx-arrow-back me-1'></i>Back to Login</a>
+                        <a href="<?php echo ROUTE_SIGN_IN; ?>" class="btn btn-light btn-lg"><i class='bx bx-arrow-back me-1'></i>صفحه ی ورود کاربران</a>
                     </div>
                 </div>
             </div>

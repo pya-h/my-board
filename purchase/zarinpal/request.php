@@ -1,7 +1,7 @@
 <?php
 $data = array("merchant_id" => ZARINPAL_MERCHANT_ID,
     "amount" => $_SESSION[ORDER_COST],
-    "callback_url" => ROUTE_LOCALROOT . ROUTE_ZARINPAL_VERIFY,
+    "callback_url" => ROUTE_WEBSITE_URL . ROUTE_ZARINPAL_VERIFY,
     "description" => "خرید " . $_SESSION[ORDER_PRODUCT_NAME],
     "metadata" => ["email" => $_SESSION[USER_EMAIL]],
 );

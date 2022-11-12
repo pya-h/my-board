@@ -52,7 +52,7 @@
             </a>
             <ul>
                 <li>
-                    <a href="../user/profile.php">
+                    <a href="<?php echo APP_TITLE ?>">
                         <div class="parent-icon"><i class="bx bx-user-circle"></i>
                         </div>
                         <div class="menu-title">پروفایل</div>

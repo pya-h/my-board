@@ -19,7 +19,10 @@
 
         // AUTHENTICATION SECTION
         case ROUTE_SIGN_IN:
-            require_once __DIR__ . '/user/auth/sign-in.php';
+            if(isset($_SESSION[USER_ID]) && $_SESSION[USER_ID] && isset($_SESSION[USER_EMAIL]) && $_SESSION[USER_EMAIL])
+                show_error(405, "در حال حاضر، شما مجاز به ورود به این بخش نیستید! برای ورود به این صفحه ابتدا باید از حساب کاربری تان خارج شوید.");
+            else
+                require_once __DIR__ . '/user/auth/sign-in.php';
             break;
 
         case ROUTE_SIGN_OUT:
@@ -31,7 +34,10 @@
             break;
 
         case ROUTE_SIGN_UP:
-            require __DIR__ . '/user/auth/sign-up.php';
+            if(isset($_SESSION[USER_ID]) && $_SESSION[USER_ID] && isset($_SESSION[USER_EMAIL]) && $_SESSION[USER_EMAIL])
+                show_error(405, "در حال حاضر، شما مجاز به ورود به این بخش نیستید! برای ورود به این صفحه ابتدا باید از حساب کاربری تان خارج شوید.");
+            else
+                require_once __DIR__ . '/user/auth/sign-up.php';
             break;
 
         case ROUTE_FORGET_PASSWORD:
