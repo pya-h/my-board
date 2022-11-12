@@ -31,10 +31,8 @@ defined('PRODUCT_MAX_USERS') or define('PRODUCT_MAX_USERS', 'max_users');
 defined('PRODUCT_IMAGE') or define('PRODUCT_IMAGE', 'img');
 
 // ROUTES
-// defined('ROUTE_LOCALROOT') or define('ROUTE_LOCALROOT',  "http://localhost"); // whatever.xxx/
-// defined('ROUTE_ROOT') or define('ROUTE_ROOT', '/'); // whatever.xxx/
 defined('ROUTE_LOCALROOT') or define('ROUTE_LOCALROOT',  "http://localhost"); // whatever.xxx/
-defined('ROUTE_ROOT') or define('ROUTE_ROOT', 'https://pya-h.github.io/my-board/'); // whatever.xxx/
+defined('ROUTE_ROOT') or define('ROUTE_ROOT', '/'); // whatever.xxx/
 defined('ROUTE_SIGN_IN') or define('ROUTE_SIGN_IN', ROUTE_ROOT . 'signin');
 defined('ROUTE_SIGN_UP') or define('ROUTE_SIGN_UP', ROUTE_ROOT . 'signup');
 defined('ROUTE_SIGN_OUT') or define('ROUTE_SIGN_OUT', ROUTE_ROOT . 'signout');
