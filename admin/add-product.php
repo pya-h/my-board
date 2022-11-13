@@ -13,6 +13,7 @@
         require_once __DIR__ . '/../common/topnav.php';
 
         unset($_FILES);
+
     ?>
     <!--end header -->
     <!--start page wrapper -->
@@ -34,7 +35,7 @@
 
             </div>
             <!--end breadcrumb-->
-        <form action="/admin/addact.php" method="post" enctype="multipart/form-data">
+        <form action="/admin/addact.php" method="post" enctype="multipart/form-data" >
           <div class="card">
               <div class="card-bodyp-4">
                   <h5 class="card-title text-center my-3">کالای جدید</h5>

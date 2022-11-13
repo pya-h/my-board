@@ -2,10 +2,9 @@
 
 // *************************** CONSTANTS ****************************
 // APP
-defined('APP_TITLE') or define('APP_TITLE', 'داشبرد');
-
-// DATABASE
-defined('DB_HOST') or define('DB_HOST', '127.0.0.1');
+defined('APP_TITLE') or define('APP_TITLE', 'VPN CENTER');
+// DATABASE: LOCAL TEST
+defined('DB_HOST') or define('DB_HOST', 'localhost');
 defined('DB_USERNAME') or define('DB_USERNAME', 'root');
 defined('DB_PASSWORD') or define('DB_PASSWORD', '');
 defined('DB_NAME') or define('DB_NAME','vps-db');
@@ -167,33 +166,6 @@ function decode_res_header($header_text) {
 
     return $headers;
 }
-function login2panel() {
-    $payload = ["username" => "admin", "password" => "admin"];
-    $jsonData = json_encode($payload);
-    $ch = curl_init("http://91.149.255.31:54321/login");
-    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json',
-        'Content-Length: ' . strlen($jsonData),
-    ));
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    $response = curl_exec($ch);
-    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-    $header = substr($response, 0, $header_size);
-    $body = json_decode(substr($response, $header_size), true, JSON_PRETTY_PRINT);
-    $header = decode_res_header($header);
-    $err = curl_error($ch);
-    curl_close($ch);
-    if($body["success"])
-        $_SESSION[COOKIE] = $header["Set-Cookie"];
-    else
-        $_SESSION[RES] = "<p class=\"error\">ERROR: " . $body["msg"] . "</p>";
-
-}
-
 function short_size($bytes) {
     $names = ["B", "KB", "MB", "GB", "TB", "EB"];
     $idx = 0;
@@ -210,7 +182,6 @@ function redirect($url)
     if (!headers_sent())
     {
         header('Location: '.$url);
-        exit;
     }
     else
     {
@@ -219,6 +190,41 @@ function redirect($url)
         echo '</script>';
         echo '<noscript>';
         echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
-        echo '</noscript>'; exit;
+        echo '</noscript>';
     }
+    exit;
+}
+function communicate($url, $payload = null) {
+    $ch = curl_init($url);
+    $headers = [ 'Content-Type: application/json'];
+    if(isset($_SESSION[COOKIE]) && $_SESSION[COOKIE])
+        $headers[] = "Cookie: " . $_SESSION[COOKIE];
+    curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    if($payload) {
+        $jsonData = json_encode($payload);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        $headers[] = 'Content-Length: ' . strlen($jsonData);
+    }
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    $result = curl_exec($ch);
+    $err = curl_error($ch);
+    $result = json_decode($result, true, JSON_PRETTY_PRINT);
+    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+    curl_close($ch);
+    return [RES => $result, ERROR => $err, "header_size" => $header_size];
+}
+function login2panel() {
+    $response = communicate("http://91.149.255.31:54321/login", ["username" => "admin", "password" => "admin"]);
+    $result = $response[RES];
+    $header = substr($result, 0, $response['header_size']);
+    $body = json_decode(substr($result,  $response['header_size']), true, JSON_PRETTY_PRINT);
+    $header = decode_res_header($header);
+    $err = $response[ERROR];
+    if($body["success"])
+        $_SESSION[COOKIE] = $header["Set-Cookie"];
+    else
+        $_SESSION[RES] = "<p class=\"error\">ERROR: " . $body["msg"] . "</p>";
+
 }

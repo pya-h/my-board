@@ -127,7 +127,7 @@
                                            </select>
                                        </div>
                                        <div class="col mx-auto">
-                                           <div class="form-check form-switch col mt-3">
+                                           <div class="form-check h-100 form-switch col mt-3">
                                                <label class="form-check-label text-center mt-2 text-right" for="checkSniffing">Sniffing</label>
                                                <input name="sniffing" class="w-25 h-50 mx-lg-5 mx-1 px-3 form-check-input" type="checkbox" checked id="checkSniffing">
                                            </div>

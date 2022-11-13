@@ -1,0 +1,5 @@
+[12-Nov-2022 23:43:38 Asia/Tehran] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/vpncente/public_html/common/config.php on line 95
+[12-Nov-2022 23:47:27 Asia/Tehran] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'vpncente_root'@'localhost' to database 'vpncente_db' in /home/vpncente/public_html/common/config.php on line 95
+[12-Nov-2022 23:54:06 Asia/Tehran] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'vpncente_root'@'localhost' to database 'vpncente_db' in /home/vpncente/public_html/common/config.php on line 95
+[12-Nov-2022 23:58:54 Asia/Tehran] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'vpncente_root'@'localhost' to database 'vpncente_db' in /home/vpncente/public_html/common/config.php on line 95
+[12-Nov-2022 23:59:05 Asia/Tehran] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'vpncente_root'@'localhost' to database 'vpncente_db' in /home/vpncente/public_html/common/config.php on line 95

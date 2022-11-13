@@ -1,13 +1,7 @@
-<script>
-    const error = (ex) => {
-
-    window.alert("ارتباط با دیتابیس ناموفق بود!");
-    console.log(ex);
-    }
-</script>
 <?php
     session_start();
     require_once __DIR__ . '/common/config.php';
+
 ?>
 <!doctype html>
 <html lang="fa">
@@ -27,19 +21,13 @@
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/app.css" rel="stylesheet">
     <link href="/assets/css/icons.css" rel="stylesheet">
-
-     <!--Theme Style CSs
-    <link rel="stylesheet" href="/assets/css/dark-theme.css" />
-    <link rel="stylesheet" href="/assets/css/semi-dark.css" />
-    <link rel="stylesheet" href="assets/css/header-colors.css" /> -->
     <link href="/assets/css/custom.css" rel="stylesheet" />
     <title>
-        <?php echo APP_TITLE ?>
+        VPN CENTER
     </title>
 </head>
 <body class="bg-theme bg-theme2">
-<?php
-require 'router.php';
-?>
+<?php 
+    require 'router.php'; ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 <div class="wrapper">
     <?php
-        $product = get_product(get_url_param($_SERVER['REQUEST_URI'], "id"));
+        $product = get_product(get_url_param($_SERVER['REQUEST_URI'], PRODUCT_ID));
         $_SESSION[ERROR] = null;
 
     ?>

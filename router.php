@@ -5,7 +5,6 @@
         require __DIR__ . '/errors/index.php';
         unset($_SESSION[ERROR]);
     }
-
     $request = $_SERVER['REQUEST_URI'];
     switch($request){
         case ROUTE_ROOT:
@@ -103,6 +102,20 @@
                 }
                 else if($arr_route[0] === ROUTE_ZARINPAL_VERIFY){
                     require_once __DIR__ . '/purchase/zarinpal/verification.php';
+                    break;
+                }
+                else if($arr_route[0] === ROUTE_ORDERS){
+                    // PURCHASE SECTION
+                    if($_SESSION[USER_ADMIN]){
+                        $order_id = get_url_param($request, ORDER_ID);
+                        if($order_id) {
+                            $query = sprintf("UPDATE `%s` SET %s='%s' WHERE %s='%s'", TABLE_ORDERS,
+                                    ORDER_STATUS, "تکمیل شده",ORDER_ID, $order_id);
+                            $result = $connection->query($query);
+                            redirect(ROUTE_ORDERS);
+                        }
+                    }
+                    
                     break;
                 }
             }

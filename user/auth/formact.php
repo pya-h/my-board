@@ -42,12 +42,12 @@ if(isset($_POST['signinAttemp'])){
         redirect(ROUTE_ROOT);
 }
 else if(isset($_POST['signupAttemp'])){
+    global $connection;
     if($connection) {
         if (isset($_POST['email']) && isset($_POST['password']) && $_POST['email'] && $_POST['password']) {
             $email = $_POST['email'];
             $password = $_POST['password'];
             $fullname = $_POST['fullname'];
-
             if(is_numeric($email) || strlen($email) < 3)
                 $_SESSION['response'] = '<p class="error">ایمیل وارد شده نامعتبر است!</p>';
             else if(strlen($password) < 4)

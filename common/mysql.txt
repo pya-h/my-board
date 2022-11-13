@@ -1,4 +1,0 @@
-CREATE TABLE `vpncente_db`.`users` ( `id` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(255) NOT NULL , `pass` VARCHAR(16) NOT NULL , `admin` TINYINT NOT NULL DEFAULT '0' , `name` VARCHAR(100) NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-
-
-CREATE TABLE `vpncente_db`.`orders` ( `id` VARCHAR(48) NOT NULL , `product_id` INT NOT NULL , `cost` INT NOT NULL , `status` VARCHAR(32) NOT NULL DEFAULT 'منتظر تایید خرید' , `date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE = InnoDB;
